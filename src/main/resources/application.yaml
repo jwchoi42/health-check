@@ -1,0 +1,18 @@
+spring:
+
+  application:
+    name: health-check
+
+  datasource:
+    url: jdbc:mysql://db:3306/health_check_db
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  data:
+    redis:
+      host: cache
+      port: 6379
+
+  kafka:
+    bootstrap-servers: broker:9092
