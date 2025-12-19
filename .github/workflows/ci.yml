@@ -29,3 +29,10 @@ jobs:
       - name: Test with Gradle
         run: ./gradlew test
 
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: test-report-html
+          path: build/reports/tests/test/
+
