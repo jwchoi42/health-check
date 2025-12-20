@@ -1,12 +1,12 @@
 # Build Stage
-FROM eclipse-temurin:17-jdk-alpine AS builder
+FROM bellsoft/liberica-openjdk-alpine:17 AS builder
 WORKDIR /app
 COPY . .
 RUN chmod +x gradlew
 RUN ./gradlew clean build -x test
 
 # Run Stage
-FROM eclipse-temurin:17-jre-alpine
+FROM bellsoft/liberica-openjre-alpine:17
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
